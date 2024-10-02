@@ -1,0 +1,76 @@
+<html>
+
+<head>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <title>Lista_dipendenti</title>
+</head>
+
+<body>
+    {% include 'common/base.html'%}
+
+    <div class="container m-5">
+
+        <div class="row ">
+            <div class="card-fluid text-center" style="width: 18rem">
+                <img src="{{azienda.immagine.url }}" class="card-img" alt="..." />
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="dropdown my-5 mx-5">
+                <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Aziende
+        </button>
+                <ul class="dropdown-menu">
+                    {% for azienda in aziende %}
+                    <li><a class="dropdown-item" href="{{ azienda.get_absolute_url }}">{{ azienda.nomeAzienda }}</a></li>
+                    {% endfor %}
+                    <li><a class="dropdown-item" href="{% url 'managementApp:lista_dipendenti' %}">All</a></li>
+
+
+                </ul>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="row">
+                {%for dipendente in dipendenti %}
+                <div class="col-sm">
+                    <div class="card-fluid text-center" style="width: 18rem">
+                        <img src="{{dipendente.immagine.url }}" class="card-img" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">{{dipendente.nome}} {{dipendente.cognome}}</h5>
+
+
+                            <div class="mx-2 my-2">
+                                <a href="" class="btn btn-dark">view </a>
+                            </div>
+
+
+                            <!--  <a href='{{gfx.descrizione}}' class="btn btn-dark">SWoSH</a> -->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+    </div>
+    {% include 'common/footer.html'%}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+
+</html>
